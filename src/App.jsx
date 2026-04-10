@@ -1,5 +1,5 @@
 import { Component } from "react"
-import { Header } from "./components/header/Header";
+import { Header } from "./components/header_temp/Header.jsx";
 import { RandomNewsContainer } from "./components/randomNews/randomNewsContainer"
 import { NewsList } from "./components/newsList/NewsList"
 import { ErrorBounder } from "./components/errorBounder/ErrorBounder"
