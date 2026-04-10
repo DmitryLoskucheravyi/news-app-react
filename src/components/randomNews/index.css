@@ -1,0 +1,13 @@
+.overflow-random{
+    max-height: 350px;
+    overflow: auto;
+}
+a, .z-hight{
+    z-index: 999;
+}
+
+.absolute-btns{
+    position: absolute;
+    bottom: 4%;
+    left: 45%;
+}
