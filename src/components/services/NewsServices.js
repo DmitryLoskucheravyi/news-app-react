@@ -22,7 +22,8 @@ export class NewsServices {
     }
 
     getRandomNews() {
-        const today = new Date();
+        const today = new Date(new Date().setDate(new Date().getDate() - 1));
+        // const today = new Date();
         const from = new Date(today.setHours(0, 0, 0, 0)).toISOString();
         const to = new Date(today.setHours(23, 59, 59, 999)).toISOString();
         
