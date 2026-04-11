@@ -19,7 +19,7 @@ export class RandomNewsItem extends Component {
                         <div className="col-5">
                             <img
                                 src={image}
-                                className="img-fluid h-100 object-fit-cover rounded-start"
+                                className="img-fluid h-100 object-fit-cover rounded-start random-image"
                                 alt="news"
                             />
                         </div>

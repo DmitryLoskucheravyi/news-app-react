@@ -11,3 +11,6 @@ a, .z-hight{
     bottom: 4%;
     left: 45%;
 }
+.random-image{
+    max-height: 350px;
+}
