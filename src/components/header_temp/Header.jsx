@@ -12,7 +12,7 @@ export class Header extends Component {
 
                         {/* 🔹 Лого / заголовок */}
                         <h4 className="text-white mb-0 fw-semibold">
-                            Слідкуйте за новинами!
+                            News
                         </h4>
 
                         {/* 🔹 Навігація */}
