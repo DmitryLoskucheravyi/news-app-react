@@ -1,4 +1,4 @@
-import { Component } from "react"
+import { useEffect, useState } from "react"
 import { Header } from "./components/header_temp/Header.jsx";
 import { RandomNewsContainer } from "./components/randomNews/randomNewsContainer"
 import { NewsList } from "./components/newsList/NewsList"
@@ -6,59 +6,44 @@ import { ErrorBounder } from "./components/errorBounder/ErrorBounder"
 // import { Filters } from "./components/filters/Filters"
 import { NewsServices } from './components/services/NewsServices.js'
 import './components/skeletons/itemAnim.css'
-export class App extends Component {
-  constructor(props) {
-    super(props)
-    this.newsServices = new NewsServices()
-    this.state = {
-      allNews: [],
-      pageAll: 2,
-      pageTop: 1,
-      loading: false,
-      newsCount: 0
-    }
-  }
 
-  onAll = () => {
-    this.setState({ loading: true });
+const newsServicesKit = new NewsServices()
+export const App = () => {
+  const [pagin, setPagin] = useState([])
+  const [page, setPage] = useState(2)
+  const [loading, setLoading] = useState(false)
 
-    this.newsServices.getAllNews(7, this.state.pageAll).then((data) => {
+  const onAll = () => {
+    setLoading(true)
+    
+    const currPage = page
+
+    newsServicesKit.getAllNews(3, currPage).then((data) => {
       setTimeout(() => {
-        this.setState(({ allNews, pageAll }) => {
-          const merged = [...allNews, ...data.articles];
-          return {
-            allNews: merged,
-            pageAll: pageAll + 1,
-            loading: false
-          };
-        });
+        setPagin((prev) => [...prev, ...data.articles])
+        setPage((prev) => prev + 1)
+        setLoading(false)
       }, 100);
     })
       .catch(error => {
-        this.setState({ loading: false });
+        setLoading(false)
         throw new Error(error);
       });
   };
 
 
+  useEffect(() => {
+    onAll()
+  }, [])
 
-  componentDidMount() {
-    this.onAll()
-
-  }
-
-  render() {
-
-    const { allNews, loading } = this.state
-    return (
-      <>
-        <Header onAll={this.onAll} onTop={this.onTop} />
-        {/* < Filters/> */}
-        <RandomNewsContainer />
-        <NewsList data={allNews} onAll={this.onAll} loading={loading} />
-      </>
-    )
-  }
+  return (
+    <>
+      <Header onAll={onAll} />
+      {/* < Filters/> */}
+      <RandomNewsContainer/>
+      <NewsList data={pagin} onAll={onAll} loading={loading} />
+    </>
+  )
 
 }
 
