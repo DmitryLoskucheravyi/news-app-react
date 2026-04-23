@@ -1,35 +1,33 @@
 import { Component } from "react";
+import { NavLink, Link } from "react-router-dom";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export class Header extends Component {
     render() {
-        const { onAll, onTop } = this.props
         return (
             <header className="bg-dark shadow-sm">
                 <div className="container">
 
                     <div className="d-flex flex-column flex-md-row justify-content-between align-items-center py-3 gap-3">
 
-                        {/* 🔹 Лого / заголовок */}
-                        <h4 className="text-white mb-0 fw-semibold">
+                        <Link to='/' className="text-white mb-0 fw-semibold">
                             News
-                        </h4>
+                        </Link>
 
-                        {/* 🔹 Навігація */}
                         <div className="d-flex gap-2">
 
-                            <button className="btn btn-outline-light" onClick={onAll}>
+                            <NavLink to='/' className="btn btn-outline-light" >
                                 Home
-                            </button>
+                            </NavLink>
 
-                            <button className="btn btn-outline-light" onClick={onTop}>
+                            <NavLink to='/about' className="btn btn-outline-light" >
+                                About
+                            </NavLink>
 
-                                Blank
-                            </button>
-
-                            <button className="btn btn-outline-warning">
+                            <NavLink to='/' className="btn btn-outline-warning">
                                 Liked
-                            </button>
+                            </NavLink>
 
                         </div>
 

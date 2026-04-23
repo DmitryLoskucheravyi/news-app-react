@@ -30,7 +30,7 @@ export const RandomNewsItem = (props) => {
                             </p>
 
                             <div className="d-flex gap-2 mt-auto absolute-btns" style={style}>
-                                <button className="btn btn-outline-secondary " onClick={() => { toggleVisiable() }}>
+                                <button className="btn btn-outline-secondary " onClick={() => {toggleVisiable() }}>
                                     {isOpen ? 'Hide' : 'Show'}
                                 </button>
 
