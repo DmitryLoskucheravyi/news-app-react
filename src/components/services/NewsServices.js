@@ -3,6 +3,7 @@ import { useHttp } from "../../hooks/http.hook";
 
 export const useNewsServices = () => {
     const _API = 'https://gnews.io/api/v4/search?q=news'
+    const _APIUA = 'https://gnews.io/api/v4/top-headlines'
     const _APIKEY = '7f4253bfd10d415630e07d474cb4ca95'
     // this._APIKEY = 'dadd7f1c37e472a3a8edee11813e1d2c'
     // this.APIKEY = '39889860da1f411ba225cf0a5a5dff54'
@@ -14,6 +15,11 @@ export const useNewsServices = () => {
             `${_API}&max=${PAGESIZE}&page=${n}&apikey=${_APIKEY}`
         );
     }
+    const getUaNews = (pageSize = 10, page = 1) => {
+        return req(
+            `${_APIUA}?country=ua&lang=uk&max=${pageSize}&page=${page}&apikey=${_APIKEY}`
+        );
+    };
 
     const getRandomNews = () => {
         const today = new Date(new Date().setDate(new Date().getDate() - 1));
@@ -24,7 +30,7 @@ export const useNewsServices = () => {
         return req(`${_API}&lang=en&from=${from}&to=${to}&max=50&sortby=publishedAt&apikey=${_APIKEY}`);
     }
 
-    return {loading, error, getRandomNews, getAllNews }
+    return { loading, error, getRandomNews, getAllNews, getUaNews}
 }
 
 // https://newsapi.org/v2/everything?

@@ -25,8 +25,8 @@ export class Header extends Component {
                                 About
                             </NavLink>
 
-                            <NavLink to='/' className="btn btn-outline-warning">
-                                Liked
+                            <NavLink to='/ua' className="btn btn-outline-warning">
+                                Ua
                             </NavLink>
 
                         </div>

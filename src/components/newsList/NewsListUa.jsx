@@ -1,15 +1,15 @@
-import { NewsItem } from "../newsItem/NewsItem";
+import { NewsItemUa } from "../newsItem/NewsItemUa";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NewsItemSkeleton } from "../skeletons/NewsItemSkeleton";
 import { ErrorBounder } from "../errorBounder/ErrorBounder";
 import { useState, useEffect, useRef } from "react";
 import { useNewsServices } from "../services/NewsServices";
-export const NewsList = (props) => {
+export const NewsListUa = (props) => {
 
 
     const [pagin, setPagin] = useState([])
     const [page, setPage] = useState(2)
-    const { loading, error, getAllNews } = useNewsServices()
+    const { loading, error, getUaNews } = useNewsServices()
     const isLoadingRef = useRef(false);
 
     const onAll = () => {
@@ -17,12 +17,13 @@ export const NewsList = (props) => {
 
         isLoadingRef.current = true;
 
-        const currPage = page
-        getAllNews(3, currPage).then((data) => {
-            setPagin((prev) => [...prev, ...data.articles])
-            setPage((prev) => prev + 1)
+        const currPage = page;
+
+        getUaNews(3, currPage).then((data) => {
+            setPagin((prev) => [...prev, ...data.articles]);
+            setPage((prev) => prev + 1);
             isLoadingRef.current = false;
-        })
+        });
     };
 
     useEffect(() => {
@@ -35,9 +36,8 @@ export const NewsList = (props) => {
     );
 
     const items = uniqueItems.map(({ author, title, description, image, url, content, publishedAt, id, source }) => {
-        return <NewsItem id={id} author={author} title={title} description={description} url={url} source={source} image={image} content={content} date={publishedAt} key={id} />
+        return <NewsItemUa id={id} author={author} title={title} description={description} url={url} source={source} image={image} content={content} date={publishedAt} key={id} />
     })
-
     const loaderRef = useRef(null)
 
     useEffect(() => {
@@ -61,7 +61,6 @@ export const NewsList = (props) => {
             observer.disconnect();
         };
     }, [page]);
-
     return (
         <>
             <div className="container my-4">
@@ -72,12 +71,12 @@ export const NewsList = (props) => {
 
                     {loading ? [<NewsItemSkeleton key={'7578571'} />, <NewsItemSkeleton key={'31515511'} />, <NewsItemSkeleton key={'75awdawd78571'} />, <NewsItemSkeleton key={'31w515511'} />] : ''}
                 </ul>
-                <div className="text-center mt-4">
-                    {/* <button
+                {/* <div className="text-center mt-4">
+                    <button
                         className="btn btn-primary" onClick={onAll} disabled={loading}>
                         {loading ? 'Loading...' : 'Load more'}
-                    </button> */}
-                </div>
+                    </button>
+                </div> */}
             </div>
             <div ref={loaderRef}></div>
         </>

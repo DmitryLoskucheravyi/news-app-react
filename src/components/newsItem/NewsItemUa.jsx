@@ -4,7 +4,7 @@ import "./newsItem.css";
 import { Link } from "react-router-dom";
 
 
-export const NewsItem = (props) => {
+export const NewsItemUa = (props) => {
 
     const [visible, setVisible] = useState(false)
 
@@ -45,17 +45,17 @@ export const NewsItem = (props) => {
 
                                 <div>
                                     <h6 className="text-muted mb-2">
-                                        Source: {source.name}
+                                        Автор: {source.name}
                                     </h6>
 
                                     <h6 className="text-secondary mb-0">
-                                        Published at: {date}
+                                        Дата публікації: {date}
                                     </h6>
                                 </div>
 
                                 <div className="d-flex gap-3">
-                                    <Link className="btn border px-4 hover-btn" to={`/news/${id}`} state={ {title, description, image, url, content, date, source, id} }>Read </Link>
-                                    <a className="btn btn-primary px-4 hover-btn" href={url} target="_blank" >More</a>
+                                    <Link className="btn border px-4 hover-btn" to={`/news/${id}`} state={ {title, description, image, url, content, date, source, id} }>Читати </Link>
+                                    <a className="btn btn-primary px-4 hover-btn" href={url} target="_blank" >Більше</a>
                                 </div>
                             </div>
 
