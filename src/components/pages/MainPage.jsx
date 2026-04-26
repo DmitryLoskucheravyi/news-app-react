@@ -5,7 +5,7 @@ import { ErrorBounder } from "../errorBounder/ErrorBounder"
 // import { Filters } from "./filters/Filters"
 
 // import { ErrorBounder } from "../errorBounder/ErrorBounder"
-export const MainPage = () => {
+const MainPage = () => {
     return (
         <>
             <ErrorBounder>
@@ -17,3 +17,4 @@ export const MainPage = () => {
         </>
     )
 }
+export default MainPage

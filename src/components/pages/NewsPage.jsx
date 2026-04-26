@@ -1,6 +1,6 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-export const NewsPage = () => {
+const NewsPage = () => {
     const alt =
         "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png";
 
@@ -100,3 +100,5 @@ export const NewsPage = () => {
         </div>
     );
 };
+
+export default NewsPage

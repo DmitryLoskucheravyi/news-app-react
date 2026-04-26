@@ -2,11 +2,13 @@
 import { ErrorBounder } from "../errorBounder/ErrorBounder"
 import { Header } from "../header_temp/Header"
 
-export const About = () => {
+const About = () => {
     return (
         <ErrorBounder>
-            <Header/>
+            <Header />
             <h2>Hello it's me</h2>
         </ErrorBounder>
     )
 }
+
+export default About
