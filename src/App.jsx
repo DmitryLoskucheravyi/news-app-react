@@ -6,6 +6,7 @@ import { About } from "./components/pages/About";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './components/skeletons/itemAnim.css'
 import { NewsPage } from "./components/pages/NewsPage";
+import { NotFound } from "./components/pages/NotFound";
 
 export const App = () => {
 
@@ -17,7 +18,7 @@ export const App = () => {
         <Route path='/about' element={<About />}></Route>
         <Route path='/ua' element={<MainPageUa />}></Route>
         <Route path='/news/:id' element={<NewsPage />}></Route>
-
+        <Route path='*' element={< NotFound/>}></Route>
       </Routes>
     </Router>
   )
